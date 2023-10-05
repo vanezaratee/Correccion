@@ -101,66 +101,84 @@ do {
        char opcion;
         int tiempo = 0, grados = 0;
 
-        std::cout << "Elija un botón (x, y, b, a) o axis (1, 2, 3, 4): ";
+        std::cout << "\n\nElija un botón (x, y, b, a) o axis (1, 2, 3, 4): " << std::endl;
+        std::cout << "Boton x: Subir la polea" << std::endl;
+        std::cout << "Boton y: Bajar la polea" << std::endl;
+        std::cout << "Boton b: Abrir brazos" << std::endl;
+        std::cout << "Boton a: Cerrar brazos" << std::endl;
+        std::cout << "Axis 1: Avanzar chasis " << std::endl;
+        std::cout << "Axis 2: Retroceder chasis " << std::endl;
+        std::cout << "Axis 3 (1 y 2): Girar chasis a la derecha " << std::endl; 
+        std::cout << "Axis 4 (2 y 1): Girar chasis a la izquierda " << std::endl; // No supe como implementar los Axis, por lo que en el 3 y 4 intento referirme a cuando uno va hacia delante y el otro hacia atras, girando el chasis
         std::cin >> opcion;
-
-        if (opcion == 'x') {
+        
+        switch (opcion) {
+            
+            case 'x':
             tiempo = 3;
             std::cout << "La polea sube por " << tiempo << " segundos" << std::endl;
             tiempotr += tiempo;
+            break;
             
-        } else if (opcion == 'y') {
+            case 'y':
             tiempo = 3;
             std::cout << "La polea baja por " << tiempo << " segundos" << std::endl;
             tiempotr += tiempo;
+            break;
             
-        } else if (opcion == 'b') {
+            case 'b':
             tiempo = 1;
             std::cout << "Los brazos se abren por " << tiempo << " segundo" << std::endl;
             tiempotr += tiempo;
+            break;
             
-        } else if (opcion == 'a') {
+            case 'a':
             tiempo = 1;
             std::cout << "Los brazos se cierran por " << tiempo << " segundo" << std::endl;
             tiempotr += tiempo;
+            break;
             
-        } else if (opcion == '1') {
+            case '1':
             std::cout << "¿Por cuánto tiempo avanza el chasis? ";
             std::cin >> tiempo;
             std::cout << "El chasis avanza por " << tiempo << " segundos" << std::endl;
             tiempotr += tiempo;
+            break;
             
-        } else if (opcion == '2') {
+            case '2':
             std::cout << "¿Por cuánto tiempo retrocede el chasis? ";
             std::cin >> tiempo;
             std::cout << "El chasis retrocede por " << tiempo << " segundos" << std::endl;
             tiempotr += tiempo;
+            break;
             
-        } else if (opcion == '3') {
+            case '3':
             std::cout << "¿Por cuánto tiempo gira a la derecha el chasis? " << std::endl;
             std::cin >> tiempo;
             std::cout << "¿Cuántos grados gira a la derecha el chasis? " << std::endl;
             std::cin >> grados;
             std::cout << "El chasis gira a la derecha por " << tiempo << " segundos y gira " << grados << " grados" << std::endl;
             tiempotr += tiempo;
+            break;
             
-        } else if (opcion == '4') {
+            case '4':
             std::cout << "¿Por cuánto tiempo gira a la izquierda el chasis? " << std::endl;
             std::cin >> tiempo;
             std::cout << "¿Cuántos grados gira a la izquierda el chasis? " << std::endl;
             std::cin >> grados;
             std::cout << "El chasis gira a la izquierda por " << tiempo << " segundos y gira " << grados << " grados" << std::endl;
             tiempotr += tiempo;
+            break;
             
-        } else {
+            default:
             std::cout << "Opción no válida. Por favor, elija de nuevo." << std::endl;
-            continue;
+            
         }
 
         int tiempo_restante = 165 - tiempotr;
         std::cout << "Te quedan " << tiempo_restante << " segundos" << std::endl;
         if (tiempo_restante <= 30) {
-            std::cout << "tiempo endgame" << std::endl;
+            std::cout << "Tiempo endgame, dirigete a la zona de salida" << std::endl;
         }
         if (tiempo_restante >= 165) {
             std::cout << "Se acabó el tiempo." << std::endl;
